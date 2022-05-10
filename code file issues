@@ -3,6 +3,8 @@
 import tweepy     
 import pandas as pd
 
+//consumer keys
+
 //authtication using twitters api
 
 auth = tweepy.OAuthHandler(consumer_key,consumer_secret)
