@@ -93,6 +93,10 @@ tweets
 
 df = pd.DataFrame({"time":time,"tweets":tweets})
 
+// tried this way instead just caping T in time the call worked although still doesnt display exact time just the date of the tweet no longer get the value error cal
+
+df = pd.DataFrame({'tweets':tweets,'Time':Time})
+
 // print
 
 df
