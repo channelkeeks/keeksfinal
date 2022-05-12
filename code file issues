@@ -157,3 +157,12 @@ for i in tweepy.Cursor(api.search_tweets, q="pandemic sad mental health", tweet_
 
     df
 
+
+
+
+
+import matplotlib.pyplot as plt
+import re
+import spacy
+nlp = spacy.load('en_core_web_lg')
+import seaborn as sns
