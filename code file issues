@@ -1,4 +1,4 @@
-//libaries needed
+//libaries needed //starting base
 
 import tweepy     
 import pandas as pd
@@ -9,7 +9,8 @@ import pandas as pd
 
 auth = tweepy.OAuthHandler(consumer_key,consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
-api = tweepy.API(auth)
+api = tweepy.API(auth)      
+//end of starting base all code intro will likely be this
 
 //getting multiple tweets from specific user, setting parametters to include tweets, # likes of tweets, time stamp of tweet
 
@@ -65,6 +66,56 @@ cursor = tweepy.Cursor(api.search_full_archive,query="mental health",label="" ,t
 for i in cursor:
     print(i.full_text)
 
+//code for search tweets success run based on single word association aka depressed
+
+//insert starting base code
+
+// define what you/re calling in this case number of tweets (this case i set to 10), tweets themselves, time stamp of tweet, defined q (querey) as depressed the word i am search
+
+number_of_tweets = 10
+tweets = []
+time = []
+q = 'depressed'
+
+// calling for multi tweets, // successfully displays 10 tweets with the use of the word depressed, //issues found it doesnt display the time stamp, display also includes retweets, display also includes some @ing someone with the word depressed in their @,also displays use of a poll
+
+for i in tweepy.Cursor(api.search_tweets, q,tweet_mode="extended").items(number_of_tweets):
+    tweets.append(i.full_text)
+time.append(i.created_at)
+
+// printing it out
+
+// for basic print just write 
+
+tweets
+
+// creation of data frame to print //valueError thrown doesnt display time or tweets
+
+df = pd.DataFrame({"time":time,"tweets":tweets})
+
+// print
+
+df
+
+// further diggiing i did a call for just time & only one single date displayed, no time stamp but the call is to dispaly the time for over 20 tweets
+
+df = pd.DataFrame({"time":time})
+
+// same call for just the tweets & it shows the number display of tweets with the word sad in the tweetand the singe array worked
+
+df = pd.DataFrame({"tweets":tweets})
+
+// call to remove all RTs from data // successfully removes all RTs from data set
+
+df = df[(~df.tweets.str.contains('RT'))]
+
+// call to reset index so numbers match tweets
+
+df = df.reset_index(drop=True)
+
+// print
+
+df
 
 
 
