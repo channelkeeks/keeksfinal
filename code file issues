@@ -158,11 +158,17 @@ for i in tweepy.Cursor(api.search_tweets, q="pandemic sad mental health", tweet_
     df
 
 
+/// read file & choose random line to print
 
-/// other stuff
+#read tweets code
+# Python code to pick a random
+# word from a text file
+from msilib.schema import Directory, IniFile
+import random
+import os
 
-import matplotlib.pyplot as plt
-import re
-import spacy
-nlp = spacy.load('en_core_web_lg')
-import seaborn as sns
+with open("anxious_tweets.txt", "r", encoding="utf8",) as files:
+    allText = files.read().splitlines()
+  
+    # print random string
+    print(random.choice(allText))
